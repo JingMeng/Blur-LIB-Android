@@ -249,7 +249,7 @@ class BlurBehindLayout : FrameLayout {
         behindMatrix?.postTranslate(behindViewPosition[0] - thisViewPosition[0].toFloat() - paddingLeft, behindViewPosition[1] - thisViewPosition[1].toFloat() - paddingTop)
         glCanvas?.concat(behindMatrix)
 
-        viewBehind?.draw(glCanvas)
+        glCanvas?.let { viewBehind?.draw(it) }
 
         commonRenderer.behindViewSurfaceTexture.endDraw(glCanvas)
     }
@@ -273,7 +273,7 @@ class BlurBehindLayout : FrameLayout {
                 glCanvas?.translate(childView.left.toFloat(), childView.top + paddingVertical * 0.5f)
                 glCanvas?.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
                 glCanvas?.concat(childView.matrix)
-                childView.draw(glCanvas)
+                glCanvas?.let { childView.draw(it) }
 
                 commonRenderer.childViewSurfaceTexture.endDraw(glCanvas)
             }

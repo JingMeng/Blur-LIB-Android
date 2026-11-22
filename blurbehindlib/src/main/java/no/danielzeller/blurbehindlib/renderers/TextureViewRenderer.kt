@@ -17,8 +17,8 @@ import javax.microedition.khronos.egl.EGLSurface
 class TextureViewRenderer(val context: Context) : TextureView.SurfaceTextureListener {
 
     private lateinit var textureViewRenderThread: TextureViewRenderThread
-    override fun onSurfaceTextureUpdated(surface: SurfaceTexture?) {}
-    override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture?, width: Int, height: Int) {}
+    override fun onSurfaceTextureUpdated(surface: SurfaceTexture) {}
+    override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture, width: Int, height: Int) {}
 
     override fun onSurfaceTextureDestroyed(surface: SurfaceTexture): Boolean {
         textureViewRenderThread.isStopped = true
